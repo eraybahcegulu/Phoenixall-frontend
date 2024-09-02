@@ -1,65 +1,79 @@
-import tr, { navItems } from '../locales/tr'
+import { EMAIL_DE, PHONE_DE, PHONE_TR, PHONE_TR_2, URL } from '../constants/staticInfos';
+import {
+    footerAboutTitleTexts,
+    footerAboutTexts,
+    footerMenuTitleTexts,
+    footerContactTitleTexts,
+    addressNameTRTexts,
+    addressDescriptionTRTexts,
+    addressNameDETexts,
+    copyrightTextTexts,
+    addressDescriptionDETexts
+} from '../constants/strings'
 
+import { navItems } from '../constants/strings';
+import { useLanguageStore } from '../stores/LanguageStore';
 
 const Footer = () => {
+    const { language  } = useLanguageStore();
     return (
         <div className='flex flex-col'>
-            <div className='bg-gray-500 flex flex-col justify-center md:flex-row p-10 gap-4 xl:gap-10 text-white'>
-                <div className='flex flex-col md:max-w-[20%] '>
-                    <span>{tr.footerAboutTitle}</span>
-                    <span>{tr.footerAbout}</span>
+            <div className='bg-gray-500 grid md:grid-cols-2 xl:grid-cols-4 justify-center md:flex-row p-10 gap-10 text-white'>
+                <div className='flex flex-col text-center  '>
+                    <span>{footerAboutTitleTexts[language]}</span>
+                    <span>{footerAboutTexts[language]}</span>
                 </div>
 
-                <div className='flex flex-col md:max-w-[20%] gap-2 '>
-                    <span>{tr.footerMenuTitle}</span>
-                    {navItems.map(({ name }) => (
+                <div className='flex flex-col  gap-2 text-center  '>
+                    <span>{footerMenuTitleTexts[language]}</span>
+                    {navItems[language].map(({ name }) => (
                         <span>
                             {name}
                         </span>
                     ))}
                 </div>
 
-                <div className='flex flex-col  md:max-w-[20%] gap-2'>
-                    <span>{tr.footerContactTitle}</span>
+                <div className='flex flex-col gap-2  text-center '>
+                    <span>{footerContactTitleTexts[language]}</span>
                     <div className='flex flex-col'>
-                        <span>{tr.addressNameTR}</span>
-                        <span>{tr.addressDescriptionTR}</span>
+                        <span>{addressNameTRTexts[language]}</span>
+                        <span>{addressDescriptionTRTexts[language]}</span>
                     </div>
 
                     <div className='flex flex-col'>
-                        <span>{tr.phoneTR}</span>
-                        <span>{tr.phoneTR2}</span>
+                        <span>{PHONE_TR}</span>
+                        <span>{PHONE_TR_2}</span>
                     </div>
 
                     <div>
-                        <span>{tr.emailDE}</span>
+                        <span>{EMAIL_DE}</span>
                     </div>
 
                     <div>
-                        <span>{tr.url}</span>
+                        <span>{URL}</span>
                     </div>
 
                 </div>
 
-                <div className='flex flex-col md:max-w-[20%] gap-2'>
-                    <span>{tr.footerContactTitle}</span>
+                <div className='flex flex-col gap-2  text-center'>
+                    <span>{footerContactTitleTexts[language]}</span>
                     <div>
-                        <span>{tr.addressNameDE}</span>
+                        <span>{addressNameDETexts[language]}</span>
                     </div>
 
                     <div className='flex flex-col'>
-                        <span>{tr.addressDescriptionDE}</span>
-                        <span>{tr.phoneDe}</span>
+                        <span>{addressDescriptionDETexts[language]}</span>
+                        <span>{PHONE_DE}</span>
                     </div>
 
                     <div>
-                        <span>{tr.emailDE}</span>
+                        <span>{EMAIL_DE}</span>
                     </div>
                 </div>
 
             </div>
             <div className='text-center bg-gray-600 text-white p-10 text-sm'>
-                <span> {tr.copyrightText} </span>
+                <span> {copyrightTextTexts[language]} </span>
             </div>
 
         </div>
